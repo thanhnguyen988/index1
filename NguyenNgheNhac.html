@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyễn Thanh Nguyên | Âm nhạc • Producer • Performer</title>
+  <meta name="description" content="Trang web cá nhân của Nguyễn Thanh Nguyên – nhạc sĩ, producer, performer. Nghe nhạc, xem video, xem lịch diễn và liên hệ đặt show." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;/* nền tối xanh tím */
+      --card:#121833;
+      --muted:#9aa3b2;
+      --text:#ebf2ff;
+      --brand:#0ea5e9;/* sky-500 */
+      --accent:#a78bfa;/* violet-400 */
+      --ring:rgba(14,165,233,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 800px at 100% -10%,rgba(99,102,241,.15),transparent 60%), radial-gradient(900px 600px at -10% 20%,rgba(14,165,233,.18),transparent 60%), var(--bg);}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(148,163,184,.12)}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;box-shadow:0 6px 20px rgba(14,165,233,.35)}
+    .logo svg{filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:10px 12px;border-radius:12px;color:#dbeafe}
+    nav a:hover{background:rgba(148,163,184,.12)}
+    .cta{display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:#e2e8f0}
+    .btn:hover{border-color:rgba(148,163,184,.45)}
+    .btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--brand),#22d3ee);color:#082f49;box-shadow:0 8px 30px rgba(14,165,233,.35)}
+    .menu-toggle{display:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:60px 0 30px}
+    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(14,165,233,.12);color:#e0f2fe;border:1px solid rgba(14,165,233,.25)}
+    .h1{font-size:44px;line-height:1.1;margin:14px 0 10px}
+    .sub{color:var(--muted);font-weight:300}
+    .hero-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(148,163,184,.15);border-radius:18px;overflow:hidden}
+    .card .p{padding:14px}
+    .cover{aspect-ratio:1.4/1;background:linear-gradient(135deg,rgba(14,165,233,.25),rgba(167,139,250,.25));display:grid;place-items:center}
+
+    /* Section */
+    section{padding:60px 0;border-top:1px solid rgba(148,163,184,.12)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}
+    .title{font-size:26px;font-weight:700}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* Music list */
+    .tracks{display:grid;gap:12px}
+    .track{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:14px;background:rgba(2,6,23,.35);border:1px solid rgba(148,163,184,.12)}
+    .play{width:42px;height:42px;border:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),#22d3ee);color:#082f49;cursor:pointer}
+    .track .meta{display:flex;flex-direction:column}
+    .track .name{font-weight:600}
+    audio{width:240px;max-width:58vw}
+
+    /* Grid albums */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .album{border-radius:18px;overflow:hidden;border:1px solid rgba(148,163,184,.12);background:rgba(2,6,23,.35)}
+    .album .p{padding:12px}
+
+    /* Video */
+    .video{position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;border:1px solid rgba(148,163,184,.12)}
+    .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* Tour */
+    table{width:100%;border-collapse:collapse;border:1px solid rgba(148,163,184,.12);overflow:hidden;border-radius:14px}
+    th,td{padding:14px;border-bottom:1px solid rgba(148,163,184,.12);text-align:left}
+    tr:hover td{background:rgba(148,163,184,.06)}
+
+    /* Contact */
+    form{display:grid;gap:12px;max-width:620px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.2);background:rgba(2,6,23,.5);color:var(--text);outline:none}
+    input:focus,textarea:focus{box-shadow:0 0 0 6px var(--ring);border-color:var(--brand)}
+
+    /* Footer */
+    footer{padding:30px 0;color:#cbd5e1}
+    .socials{display:flex;gap:12px}
+    .iconbtn{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;border:1px solid rgba(148,163,184,.18);background:rgba(2,6,23,.45)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;gap:20px}
+      .hero-cards{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .menu-toggle{display:inline-flex;align-items:center;gap:8px}
+      .grid{grid-template-columns:1fr}
+      .hero-cards{grid-template-columns:1fr}
+      audio{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Trang chủ Nguyễn Thanh Nguyên">
+        <span class="logo" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l3.5 6.5L22 11l-6.5 3  -3.5 7 -3.5-7L2 11l6.5-1.5L12 3z" fill="white"/>
+          </svg>
+        </span>
+        <span>Nguyễn Thanh Nguyên</span>
+      </a>
+      <nav aria-label="Điều hướng">
+        <ul>
+          <li><a href="#music">Âm nhạc</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#tour">Lịch diễn</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn" href="#contact">Đặt show</a>
+        <button class="btn primary menu-toggle" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" hidden>
+    <div class="container" style="padding:12px 20px 8px 20px">
+      <nav>
+        <ul style="display:grid;gap:8px;list-style:none;padding:0;margin:0">
+          <li><a href="#music">Âm nhạc</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#tour">Lịch diễn</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <main id="home" class="container">
+    <section class="hero" aria-label="Giới thiệu nhanh">
+      <div>
+        <span class="tag">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 19V6h8a4 4 0 1 1 0 8H9"/></svg>
+          Nhạc sĩ • Producer • Performer
+        </span>
+        <h1 class="h1">Âm nhạc kể câu chuyện —<br/> chạm đến trái tim.</h1>
+        <p class="sub">Chào bạn, mình là <strong>Nguyễn Thanh Nguyên</strong>. Mình sáng tác, sản xuất và trình diễn các bản nhạc pop/indie/lo-fi với cảm hứng từ những khoảnh khắc đời thường. Mời bạn nghe những ca khúc mới nhất bên dưới.</p>
+        <div class="hero-cards">
+          <article class="card">
+            <div class="cover" aria-hidden="true">
+              🎧
+            </div>
+            <div class="p">
+              <div class="muted">Single mới</div>
+              <div style="font-weight:700">"Qua Phố Đêm"</div>
+              <audio controls preload="metadata">
+                <source src="D:/ThinhGiang/TruongTrungCapVietNhat/ThietKeQuanTri_Web/MyWeb/music/PhoDem.mp3" type="audio/mpeg" />
+                Trình duyệt của bạn không hỗ trợ audio.
+              </audio>
+            </div>
+          </article>
+          <article class="card">
+            <div class="cover" aria-hidden="true">📀</div>
+            <div class="p">
+              <div class="muted">EP đề cử</div>
+              <div style="font-weight:700">"Những Ngày Xanh"</div>
+              <a class="btn" href="#albums">Nghe ngay</a>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="height:100%">
+          <div class="cover" style="aspect-ratio:3/4;background-image:linear-gradient(135deg,rgba(99,102,241,.18),rgba(14,165,233,.18)), url('https://images.unsplash.com/photo-1513829596324-4bb2800c5efb?q=80&w=1200&auto=format&fit=crop'); background-size:cover;background-position:center" role="img" aria-label="Chân dung nghệ sĩ cầm guitar" ></div>
+          <div class="p">
+            <div class="muted">Ảnh: Unsplash demo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music" aria-labelledby="music-title">
+      <div class="section-head">
+        <h2 class="title" id="music-title">Âm nhạc</h2>
+        <p class="muted">Các bản phát hành và demo gần đây</p>
+      </div>
+      <div class="tracks">
+        <!-- Track item -->
+        <div class="track">
+          <button class="play" aria-label="Phát/Bật tạm dừng" data-target="#audio1">▶</button>
+          <div class="meta">
+            <span class="name">Qua Phố Đêm</span>
+            <span class="muted">Single • 2025 • 3:26</span>
+          </div>
+          <audio id="audio1" preload="none">
+            <source src="D:/ThinhGiang/TruongTrungCapVietNhat/ThietKeQuanTri_Web/MyWeb/music/PhoDem.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="track">
+          <button class="play" aria-label="Phát/Bật tạm dừng" data-target="#audio2">▶</button>
+          <div class="meta">
+            <span class="name">Những Ngày Xanh</span>
+            <span class="muted">EP • 2024 • 2:58</span>
+          </div>
+          <audio id="audio2" preload="none">
+            <source src="assets/nhung-ngay-xanh.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+        <div class="track">
+          <button class="play" aria-label="Phát/Bật tạm dừng" data-target="#audio3">▶</button>
+          <div class="meta">
+            <span class="name">Ngày Em Đến</span>
+            <span class="muted">Single • 2023 • 3:45</span>
+          </div>
+          <audio id="audio3" preload="none">
+            <source src="assets/ngay-em-den.mp3" type="audio/mpeg" />
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <section id="albums" aria-labelledby="albums-title">
+      <div class="section-head">
+        <h2 class="title" id="albums-title">Album & Playlist</h2>
+        <p class="muted">Chọn một album để nghe trọn vẹn</p>
+      </div>
+      <div class="grid">
+        <article class="album">
+          <div class="cover" style="aspect-ratio:1/1;background-image:linear-gradient(135deg,rgba(14,165,233,.2),rgba(167,139,250,.2)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop'); background-size:cover;background-position:center"></div>
+          <div class="p">
+            <div style="font-weight:700">Những Ngày Xanh (EP)</div>
+            <div class="muted">2024 • 6 track</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#music">Nghe</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Spotify</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Apple Music</a>
+            </div>
+          </div>
+        </article>
+        <article class="album">
+          <div class="cover" style="aspect-ratio:1/1;background-image:linear-gradient(135deg,rgba(14,165,233,.2),rgba(167,139,250,.2)), url('https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1200&auto=format&fit=crop'); background-size:cover;background-position:center"></div>
+          <div class="p">
+            <div style="font-weight:700">Lofi for Study</div>
+            <div class="muted">Playlist • 35 track</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#music">Nghe</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">YouTube</a>
+            </div>
+          </div>
+        </article>
+        <article class="album">
+          <div class="cover" style="aspect-ratio:1/1;background-image:linear-gradient(135deg,rgba(14,165,233,.2),rgba(167,139,250,.2)), url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop'); background-size:cover;background-position:center"></div>
+          <div class="p">
+            <div style="font-weight:700">Acoustic Sessions</div>
+            <div class="muted">Album live • 10 track</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#music">Nghe</a>
+              <a class="btn" href="#" target="_blank" rel="noopener">Bandcamp</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="video" aria-labelledby="video-title">
+      <div class="section-head">
+        <h2 class="title" id="video-title">Video</h2>
+        <p class="muted">MV, live session và hậu trường</p>
+      </div>
+      <div class="video">
+        <!-- Thay src bằng link MV YouTube của bạn -->
+        <iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="tour" aria-labelledby="tour-title">
+      <div class="section-head">
+        <h2 class="title" id="tour-title">Lịch diễn</h2>
+        <p class="muted">Những đêm diễn sắp tới</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <table aria-label="Bảng lịch diễn">
+          <thead>
+            <tr><th>Ngày</th><th>Địa điểm</th><th>Thành phố</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>12/09/2025</td><td>Acoustic Cafe</td><td>TP.HCM</td>
+              <td><a class="btn primary" href="#contact">Đặt vé</a></td>
+            </tr>
+            <tr>
+              <td>20/10/2025</td><td>ĐH Văn Lang</td><td>TP.HCM</td>
+              <td><a class="btn" href="#contact">Liên hệ</a></td>
+            </tr>
+            <tr>
+              <td>15/11/2025</td><td>Da Nang Music Hall</td><td>Đà Nẵng</td>
+              <td><a class="btn" href="#contact">Liên hệ</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 class="title" id="about-title">Giới thiệu</h2>
+        <p class="muted">Một chút về hành trình âm nhạc</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <p><strong>Nguyễn Thanh Nguyên</strong> là nhạc sĩ/producer độc lập tại Việt Nam. Phong cách chủ đạo: pop/indie/lo-fi với chất liệu mộc mạc, giai điệu bắt tai và ca từ gần gũi. Từ 2023, Nguyên đã phát hành 2 EP và 6 single trên các nền tảng số, đồng thời cộng tác hòa âm/thu âm cho nhiều nghệ sĩ trẻ.</p>
+        <p>Cảm hứng đến từ những chuyến đi, những cuộc trò chuyện nửa đêm và tiếng mưa trên hiên nhà. Âm nhạc của Nguyên hướng đến sự chữa lành, chậm rãi mà vẫn tươi mới.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <h2 class="title" id="contact-title">Liên hệ</h2>
+        <p class="muted">Đặt show, hợp tác sản xuất, truyền thông</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <form onsubmit="handleSubmit(event)">
+          <div style="display:grid;gap:10px;grid-template-columns:1fr 1fr">
+            <div>
+              <label class="muted" for="name">Họ tên</label>
+              <input id="name" name="name" placeholder="Người liên hệ" required />
+            </div>
+            <div>
+              <label class="muted" for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="email@domain.com" required />
+            </div>
+          </div>
+          <div>
+            <label class="muted" for="message">Nội dung</label>
+            <textarea id="message" name="message" rows="5" placeholder="Mô tả ngắn gọn nhu cầu của bạn" required></textarea>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <button class="btn primary" type="submit">Gửi yêu cầu</button>
+            <span id="formStatus" class="muted" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+        <div style="margin-top:12px" class="muted">
+          Hoặc liên hệ trực tiếp: <a href="mailto:hello@nguyenthanhnguyen.music">hello@nguyenthanhnguyen.music</a> • <a href="tel:+84901234567">+84 90 123 4567</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+      <div>© <span id="year"></span> Nguyễn Thanh Nguyên. All rights reserved.</div>
+      <div class="socials" aria-label="Mạng xã hội">
+        <a class="iconbtn" href="#" aria-label="Spotify" title="Spotify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m4.38 14.84a.75.75 0 0 1-1.03.27c-2.82-1.73-6.37-2.12-10.54-1.16a.75.75 0 1 1-.33-1.46c4.54-1.04 8.44-.61 11.52 1.27.36.22.47.69.24 1.08m1.45-3.2a.94.94 0 0 1-1.29.34c-3.24-1.99-8.17-2.58-11.99-1.41a.94.94 0 0 1-1.13-.63.94.94 0 0 1 .64-1.14c4.32-1.34 9.72-.7 13.43 1.52.44.27.58.86.34 1.32m.13-3.33c-3.88-2.3-10.02-2.51-13.61-1.39a1.13 1.13 0 1 1-.65-2.16c4.1-1.24 10.86-1 15.2 1.56a1.13 1.13 0 0 1-1.13 1.99"/></svg>
+        </a>
+        <a class="iconbtn" href="#" aria-label="YouTube" title="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8zM9.5 15.5v-7l7 3.5-7 3.5z"/></svg>
+        </a>
+        <a class="iconbtn" href="#" aria-label="Facebook" title="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h2v7h3v-7h2.2l.8-3H13V9c0-.6.4-1 1-1z"/></svg>
+        </a>
+        <a class="iconbtn" href="#" aria-label="Instagram" title="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3m-5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5m0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5m5.8-2.3a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="toTop" aria-label="Lên đầu trang" style="position:fixed;right:18px;bottom:18px;width:44px;height:44px;border-radius:14px;border:1px solid rgba(148,163,184,.2);background:rgba(2,6,23,.65);backdrop-filter:blur(6px);display:none">↑</button>
+
+  <script>
+    // năm bản quyền
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // nút lên đầu trang
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      toTop.style.display = window.scrollY > 400 ? 'block' : 'none';
+    });
+    toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+    // mobile menu toggle
+    const btnMenu = document.querySelector('.menu-toggle');
+    const mobile = document.getElementById('mobileMenu');
+    btnMenu.addEventListener('click', () => {
+      const open = mobile.hasAttribute('hidden') ? false : true;
+      if(open){ mobile.setAttribute('hidden',''); btnMenu.setAttribute('aria-expanded','false'); }
+      else { mobile.removeAttribute('hidden'); btnMenu.setAttribute('aria-expanded','true'); }
+    });
+
+    // play single source at a time
+    const playButtons = document.querySelectorAll('.play');
+    const audios = document.querySelectorAll('audio');
+    playButtons.forEach(btn => btn.addEventListener('click', () => {
+      const sel = btn.getAttribute('data-target');
+      const audio = document.querySelector(sel);
+      if(!audio) return;
+      // pause others
+      audios.forEach(a => { if(a!==audio){ a.pause(); a.currentTime = a.currentTime; }});
+      if(audio.paused){ audio.play(); btn.textContent = '⏸'; }
+      else { audio.pause(); btn.textContent = '▶'; }
+      audio.onended = () => { btn.textContent = '▶'; };
+    }));
+
+    // fake form submit
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Đã nhận yêu cầu! Mình sẽ phản hồi trong thời gian sớm nhất.';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
